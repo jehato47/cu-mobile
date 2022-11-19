@@ -63,7 +63,7 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Flutter](https://flutter.dev/) installed.
 
 ## :checkered_flag: Starting ##
 
@@ -75,12 +75,11 @@ $ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/cu_mobile
 $ cd cu_mobile
 
 # Install dependencies
-$ yarn
+$ flutter pub get
 
-# Run the project
-$ yarn start
+# Run the App
+$ flutter run
 
-# The server will initialize in the <http://localhost:3000>
 ```
 
 ## :memo: License ##
@@ -88,7 +87,7 @@ $ yarn start
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 
-Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/jehato47" target="_blank">jehato47</a>
 
 &#xa0;
 

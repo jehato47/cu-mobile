@@ -69,7 +69,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/cu_mobile
+$ git clone https://github.com/jehato47/cu_mobile
 
 # Access
 $ cd cu_mobile

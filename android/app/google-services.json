@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1036605868885",
+    "project_id": "cuku-mobile",
+    "storage_bucket": "cuku-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036605868885:android:d6b6e5691f2e9ec8fdbddc",
+        "android_client_info": {
+          "package_name": "com.example.cu_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036605868885-lvf86k0luejqos0s5ttq7tcvdsqd3vau.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxSqPwNPBkJpm9lVYgmtP-1cNB2pDgbsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036605868885-lvf86k0luejqos0s5ttq7tcvdsqd3vau.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

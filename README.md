@@ -6,7 +6,7 @@
   <!-- <a href="https://cu_mobile.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Cu_mobile</h1>
+<h1 align="center">Çukurova University Mobile App</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/cu_mobile?color=56BEB8">
@@ -46,23 +46,20 @@
 
 ## :dart: About ##
 
-Describe your project
+This is an cross platform mobile application of Çukurova University. It is built with [Flutter](https://flutter.dev/) 
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Canlı Desktek;\
+:heavy_check_mark: Fikrini Söyle;\
+:heavy_check_mark: Üniversitem Çukurova;
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Firebase](https://firebase.flutter.dev/)
+- [Flutter](https://flutter.dev/)
 
 ## :white_check_mark: Requirements ##
 

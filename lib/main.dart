@@ -1,6 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cu_mobile/firebase_options.dart';
 import 'package:cu_mobile/providers/poll_provider.dart';
+import 'package:cu_mobile/screens/chat/chat_screen.dart';
 import 'package:cu_mobile/screens/firebase/firebase_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -14,7 +15,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebasePushHandler);
-  AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+  await AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
     if (!isAllowed) {
       // This is just a basic example. For real apps, you must show some
       // friendly dialog box before call the request method.
@@ -144,7 +145,7 @@ class _MyAppState extends State<MyApp> {
               }
 
               if (snapshot.connectionState == ConnectionState.done) {
-                return const FirebaseScreen();
+                return const MainScreen();
               }
 
               return const Scaffold(
@@ -169,6 +170,9 @@ class _MyAppState extends State<MyApp> {
               assert(false, 'Page ${settings.name} not found');
               return null;
           }
+        },
+        routes: {
+          ChatScreen.url: (context) => ChatScreen(),
         },
       ),
     );

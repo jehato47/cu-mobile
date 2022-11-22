@@ -3,9 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class MessageInput extends StatefulWidget {
-  final dynamic doc;
+  // final dynamic doc;
   final ScrollController scrollController;
-  MessageInput(this.doc, this.scrollController);
+  MessageInput(this.scrollController);
 
   @override
   _MessageInputState createState() => _MessageInputState();
@@ -18,25 +18,44 @@ class _MessageInputState extends State<MessageInput> {
 
   Future<void> _send() async {
     ScrollController _scrollController = widget.scrollController;
-    dynamic doc = widget.doc;
+    // dynamic doc = widget.doc;
 
     if (_controller.text.trim().isEmpty) return;
     String text = _controller.text;
     _controller.clear();
-    _scrollController.jumpTo(
+    _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeOut,
     );
-    await FirebaseFirestore.instance.collection("etudeChat").add({
-      "created": false,
+    // _scrollController.jumpTo(
+    //   _scrollController.position.maxScrollExtent,
+    // );
+
+    print("sent");
+
+    await FirebaseFirestore.instance.collection("messages").add({
       "uid": auth.currentUser!.uid,
-      "eRequestid": doc.id,
-      "note": text,
+      "text": text,
       "displayName": auth.currentUser!.displayName,
-      "date": DateTime.now(),
+      "onCreated": DateTime.now(),
     });
-    _scrollController.jumpTo(
-      _scrollController.position.maxScrollExtent,
-    );
+    // await FirebaseFirestore.instance.collection("messages").add({
+    //   "text": "text",
+    //   "onCreated": DateTime.now(),
+    //   "uid": "id",
+    //   "isMe": false,
+    // });
+    Future.delayed(Duration.zero).then((value) {
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+        // _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      }
+    });
   }
 
   @override
@@ -67,7 +86,7 @@ class _MessageInputState extends State<MessageInput> {
                 // });
               },
               decoration: InputDecoration(
-                labelText: "Cevap Yazın",
+                labelText: "Mesajınızı Yazın",
               ),
             ),
           ),

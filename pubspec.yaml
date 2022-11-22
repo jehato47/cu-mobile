@@ -38,9 +38,11 @@ dependencies:
   firebase_in_app_messaging: ^0.7.0+6
   firebase_messaging: ^14.1.1
   firebase_storage: ^11.0.6
+  firebase_ui_auth: ^1.0.6
   flutter:
     sdk: flutter
   flutter_polls: ^0.1.1
+  font_awesome_flutter: ^10.2.1
   provider: ^6.0.4
 
 dev_dependencies:

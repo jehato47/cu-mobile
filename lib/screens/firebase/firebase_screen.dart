@@ -1,5 +1,6 @@
 import 'package:awesome_notifications/android_foreground_service.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,8 @@ class _FirebaseScreenState extends State<FirebaseScreen> {
         child: ElevatedButton(
           child: Text("click"),
           onPressed: () async {
+            await FirebaseAuth.instance.currentUser!
+                .updateDisplayName("jehat deniz");
             // AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
             //   if (!isAllowed) {
             //     // This is just a basic example. For real apps, you must show some

@@ -1,6 +1,8 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cu_mobile/firebase_options.dart';
 import 'package:cu_mobile/providers/poll_provider.dart';
+import 'package:cu_mobile/screens/auth/auth_gate.dart';
+import 'package:cu_mobile/screens/auth/authentication_screen.dart';
 import 'package:cu_mobile/screens/chat/chat_screen.dart';
 import 'package:cu_mobile/screens/firebase/firebase_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -131,29 +133,26 @@ class _MyAppState extends State<MyApp> {
             // primarySwatch: Colors.deepOrange,
             ),
         home: FutureBuilder(
-            future: Firebase.initializeApp(
-              options: DefaultFirebaseOptions.currentPlatform,
-            ),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                print(snapshot.error);
-                return const Scaffold(
-                  body: Center(
-                    child: Text('Error initializing Firebase'),
-                  ),
-                );
-              }
-
-              if (snapshot.connectionState == ConnectionState.done) {
-                return const MainScreen();
-              }
-
-              return const Scaffold(
-                body: Center(
-                  child: Text('Error initializing Firebase'),
-                ),
+          future: Firebase.initializeApp(
+            options: DefaultFirebaseOptions.currentPlatform,
+          ),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
               );
-            }),
+            }
+
+            if (snapshot.hasData) {
+              return AuthGate();
+            }
+
+            return Container();
+          },
+        ),
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/':

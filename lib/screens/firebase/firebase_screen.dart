@@ -21,6 +21,43 @@ class _FirebaseScreenState extends State<FirebaseScreen> {
         child: ElevatedButton(
           child: Text("click"),
           onPressed: () async {
+            await FirebaseFirestore.instance.collection("polls").add(
+              {
+                "onCreated": DateTime.now(),
+                "id": 1,
+                'votes': [
+                  // {"uid": "jehat", "option": 1},
+                  // {"uid": "deniz", "option": 1}
+                ],
+                "question": "What is your favorite color?",
+                "options": [
+                  {"id": 1, "text": "Red", "votes": 1},
+                  {"id": 2, "text": "Green", "votes": 1},
+                  {"id": 3, "text": "Blue", "votes": 1},
+                ],
+                "end_date": DateTime.now().add(Duration(days: 7)),
+              },
+            );
+            // return;
+            await FirebaseFirestore.instance.collection("polls").add(
+              {
+                "onCreated": DateTime.now(),
+                'id': 2,
+                'votes': [
+                  // {"uid": "jehat", "option": 1},
+                  // {"uid": "deniz", "option": 1}
+                ],
+                'question': 'Do you think Oranguntans have the ability speak?',
+                'end_date': DateTime(2022, 12, 25),
+                'options': [
+                  {'id': 1, 'text': 'Yes, they definitely do', 'votes': 40},
+                  {'id': 2, 'text': 'No, they do not', 'votes': 0},
+                  {'id': 3, 'text': 'I do not know', 'votes': 10},
+                  {'id': 4, 'text': 'Why should I care?', 'votes': 30}
+                ],
+              },
+            );
+            return;
             await FirebaseAuth.instance.currentUser!
                 .updateDisplayName("jehat deniz");
             // AwesomeNotifications().isNotificationAllowed().then((isAllowed) {

@@ -16,6 +16,9 @@ class _GetPollsScreenState extends State<GetPollsScreen> {
   Widget build(BuildContext context) {
     PollProvider pollProvider = Provider.of<PollProvider>(context);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Polls"),
+      ),
       body: FutureBuilder(
         future: pollProvider.getPolls(),
         builder: (context, snapshot) {

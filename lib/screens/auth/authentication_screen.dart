@@ -1,5 +1,3 @@
-import 'package:cu_mobile/screens/chat/chat_screen.dart';
-import 'package:cu_mobile/screens/home/main_screen.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 

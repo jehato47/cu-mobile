@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 import 'message_bubble.dart';
 
 class Messages extends StatefulWidget {
-  const Messages({super.key, required this.scrollController});
+  const Messages({
+    super.key,
+    required this.scrollController,
+    required this.groupId,
+  });
   final ScrollController scrollController;
+  final String groupId;
 
   @override
   State<Messages> createState() => _MessagesState();
@@ -42,15 +47,16 @@ class _MessagesState extends State<Messages> {
     return StreamBuilder(
       stream: FirebaseFirestore.instance
           .collection("messages")
+          .where("groupId", isEqualTo: widget.groupId)
           .orderBy("onCreated")
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text("Something went wrong");
+          return Center(child: Text("Something went wrong"));
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return Center(child: Text("Loading"));
         }
         final docs = (snapshot.data as QuerySnapshot).docs;
 
@@ -68,6 +74,7 @@ class _MessagesState extends State<Messages> {
           controller: _scrollController,
           itemBuilder: (context, index) {
             final doc = docs[index];
+
             return MessageBubble(
               doc["text"] ?? "",
               doc["displayName"] ?? "Anonymous",

@@ -3,8 +3,10 @@ import 'package:cu_mobile/firebase_options.dart';
 import 'package:cu_mobile/providers/poll_provider.dart';
 import 'package:cu_mobile/screens/auth/auth_gate.dart';
 import 'package:cu_mobile/screens/auth/authentication_screen.dart';
-import 'package:cu_mobile/screens/chat/chat_screen.dart';
+import 'package:cu_mobile/screens/chat/chat_with_other_screen.dart';
+import 'package:cu_mobile/screens/chat/single_chat/chat_screen.dart';
 import 'package:cu_mobile/screens/firebase/firebase_screen.dart';
+import 'package:cu_mobile/screens/polls/get_polls_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -172,6 +174,8 @@ class _MyAppState extends State<MyApp> {
         },
         routes: {
           ChatScreen.url: (context) => ChatScreen(),
+          ChatWithOtherScreen.url: (context) => ChatWithOtherScreen(),
+          GetPollsScreen.url: (context) => GetPollsScreen(),
         },
       ),
     );

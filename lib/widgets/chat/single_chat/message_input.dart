@@ -5,10 +5,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 class MessageInput extends StatefulWidget {
   // final dynamic doc;
   final ScrollController scrollController;
-  MessageInput(this.scrollController);
+  final String groupId;
+  const MessageInput({
+    super.key,
+    required this.scrollController,
+    required this.groupId,
+  });
 
   @override
-  _MessageInputState createState() => _MessageInputState();
+  State<MessageInput> createState() => _MessageInputState();
 }
 
 class _MessageInputState extends State<MessageInput> {
@@ -35,10 +40,12 @@ class _MessageInputState extends State<MessageInput> {
     print("sent");
 
     await FirebaseFirestore.instance.collection("messages").add({
+      "type": "message",
       "uid": auth.currentUser!.uid,
       "text": text,
       "displayName": auth.currentUser!.displayName,
       "onCreated": DateTime.now(),
+      "groupId": widget.groupId,
     });
     // await FirebaseFirestore.instance.collection("messages").add({
     //   "text": "text",

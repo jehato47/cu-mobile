@@ -87,4 +87,23 @@ class PollProvider extends ChangeNotifier {
 
     return numberOfVotes;
   }
+
+  Future<void> removeVote(int pollId, String uid) async {
+    final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+        .instance
+        .collection("polls")
+        .where("id", isEqualTo: pollId)
+        .get();
+
+    final docs = snapshot.docs;
+    List votes = docs[0].data()["votes"];
+    votes.removeWhere((element) => element["uid"] == "jehat");
+
+    await FirebaseFirestore.instance
+        .collection("polls")
+        .doc(docs[0].id)
+        .update({
+      "votes": votes,
+    });
+  }
 }

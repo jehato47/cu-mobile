@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cu_mobile/screens/chat/single_chat/chat_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/chat/button/new_group_button.dart';
+import '../../widgets/chat/button/sure_check.dart';
+import 'single_chat/chat_screen.dart';
 
 class ChatWithOtherScreen extends StatefulWidget {
   static const url = "chat_with_other";
@@ -11,9 +15,17 @@ class ChatWithOtherScreen extends StatefulWidget {
 }
 
 class _ChatWithOtherScreenState extends State<ChatWithOtherScreen> {
+  void initState() {
+    super.initState();
+    FirebaseMessaging.instance.subscribeToTopic("chat");
+    print("done");
+    // FirebaseMessaging.onBackgroundMessage((message) {})
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: NewGroupButton(),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection("groups")
@@ -35,6 +47,14 @@ class _ChatWithOtherScreenState extends State<ChatWithOtherScreen> {
             itemCount: docs.length,
             itemBuilder: (context, index) {
               return ListTile(
+                onLongPress: () async {
+                  await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return SureCheck(groupId: docs[index].id);
+                    },
+                  );
+                },
                 onTap: () {
                   Navigator.pushNamed(context, ChatScreen.url, arguments: {
                     "groupId": docs[index].id,

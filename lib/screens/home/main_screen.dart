@@ -1,13 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cu_mobile/screens/auth/authentication_screen.dart';
-import 'package:cu_mobile/screens/chat/chat_with_other_screen.dart';
-import 'package:cu_mobile/screens/chat/single_chat/chat_screen.dart';
-import 'package:cu_mobile/screens/firebase/firebase_screen.dart';
-import 'package:cu_mobile/screens/polls/get_polls_screen.dart';
-import 'package:cu_mobile/widgets/polls/polls_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../chat/chat_with_other_screen.dart';
+import '../polls/poll_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -32,7 +28,7 @@ class MainScreen extends StatelessWidget {
           IconButton(
             onPressed: () async {
               // await FirebaseAuth.instance.signOut();
-              Navigator.of(context).pushNamed(GetPollsScreen.url);
+              Navigator.of(context).pushNamed(PollScreen.url);
 
               // Navigator.of(context).pushReplacement(MaterialPageRoute(
               //   builder: (context) => AuthenticationScreen(),
@@ -43,7 +39,7 @@ class MainScreen extends StatelessWidget {
             ),
           ),
         ],
-        title: const Text('Flutter Polls 🗳'),
+        title: const Text('Çukurova Mobile 👌🎉'),
         backgroundColor: Colors.black,
       ),
       body: Center(

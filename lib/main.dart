@@ -1,19 +1,18 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:cu_mobile/firebase_options.dart';
-import 'package:cu_mobile/providers/poll_provider.dart';
-import 'package:cu_mobile/screens/auth/auth_gate.dart';
-import 'package:cu_mobile/screens/auth/authentication_screen.dart';
-import 'package:cu_mobile/screens/chat/chat_with_other_screen.dart';
-import 'package:cu_mobile/screens/chat/single_chat/chat_screen.dart';
-import 'package:cu_mobile/screens/firebase/firebase_screen.dart';
-import 'package:cu_mobile/screens/polls/get_polls_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'firebase_options.dart';
 import 'models/notification_controller.dart';
+import 'providers/poll_provider.dart';
+import 'screens/auth/auth_gate.dart';
+import 'screens/chat/chat_with_other_screen.dart';
+import 'screens/chat/single_chat/chat_screen.dart';
+import 'screens/firebase/firebase_screen.dart';
 import 'screens/home/main_screen.dart';
+import 'screens/polls/poll_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -132,8 +131,8 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-            // primarySwatch: Colors.deepOrange,
-            ),
+          primarySwatch: Colors.indigo,
+        ),
         home: FutureBuilder(
           future: Firebase.initializeApp(
             options: DefaultFirebaseOptions.currentPlatform,
@@ -173,9 +172,10 @@ class _MyAppState extends State<MyApp> {
           }
         },
         routes: {
-          ChatScreen.url: (context) => ChatScreen(),
-          ChatWithOtherScreen.url: (context) => ChatWithOtherScreen(),
-          GetPollsScreen.url: (context) => GetPollsScreen(),
+          ChatScreen.url: (context) => const ChatScreen(),
+          ChatWithOtherScreen.url: (context) => const ChatWithOtherScreen(),
+          // GetPollsScreen.url: (context) => const GetPollsScreen(),
+          PollScreen.url: (context) => const PollScreen(),
         },
       ),
     );

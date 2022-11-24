@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class MessageBubble extends StatelessWidget {
@@ -53,7 +54,8 @@ class MessageBubble extends StatelessWidget {
                   ),
                   Text(
                     message,
-                    style: TextStyle(
+                    style: GoogleFonts.openSans(
+                      fontSize: 16,
                       color: isMe
                           ? Colors.black
                           : Theme.of(context).accentTextTheme.headline1!.color,

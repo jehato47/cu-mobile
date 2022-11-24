@@ -21,6 +21,13 @@ class _FirebaseScreenState extends State<FirebaseScreen> {
         child: ElevatedButton(
           child: Text("click"),
           onPressed: () async {
+            final token = await FirebaseMessaging.instance.getToken();
+            print(token);
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc('token')
+                .set({'token': token});
+            return;
             await FirebaseFirestore.instance.collection("polls").add(
               {
                 "onCreated": DateTime.now(),
@@ -69,12 +76,12 @@ class _FirebaseScreenState extends State<FirebaseScreen> {
             //   }
             // });
 
-            final token = await FirebaseMessaging.instance.getToken();
-            print(token);
-            FirebaseFirestore.instance
-                .collection('users')
-                .doc('token')
-                .set({'token': token});
+            // final token = await FirebaseMessaging.instance.getToken();
+            // print(token);
+            // FirebaseFirestore.instance
+            //     .collection('users')
+            //     .doc('token')
+            //     .set({'token': token});
 
             // AndroidForegroundService.startAndroidForegroundService(
             //     foregroundStartMode: ForegroundStartMode.stick,

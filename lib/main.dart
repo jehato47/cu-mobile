@@ -62,9 +62,10 @@ Future<void> main() async {
       debug: true);
   AwesomeNotifications().setChannel(
     NotificationChannel(
-        channelKey: "secondary",
-        channelName: "secondary",
-        channelDescription: "channelDescription"),
+      channelKey: "secondary",
+      channelName: "secondary",
+      channelDescription: "channelDescription",
+    ),
   );
   // AwesomeNotifications().initialize(
   //     // set the icon to null if you want to use the default app icon

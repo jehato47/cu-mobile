@@ -1,8 +1,9 @@
-import 'package:cu_mobile/screens/auth/authentication_screen.dart';
-import 'package:cu_mobile/screens/home/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../home/main_screen.dart';
+import 'authentication_screen.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({Key? key}) : super(key: key);

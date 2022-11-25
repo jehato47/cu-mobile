@@ -201,9 +201,6 @@ Future<void> createNotification(String title, String body) async {
     content: NotificationContent(
         id: -1, // -1 is replaced by a random number
         channelKey: 'alerts',
-        // title: 'Huston! The eagle has landed!',
-        // body:
-        //     "A small step for a man, but a giant leap to Flutter's community!",
         title: title,
         body: body,
         bigPicture:
